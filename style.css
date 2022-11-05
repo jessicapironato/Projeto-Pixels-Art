@@ -3,7 +3,7 @@ body {
 }
 
 
-.color-palette , #cor1 , #cor2 , #cor3 , #cor4 {
+.color-palette , .color {
   border: solid black 1px;
   display: inline-block;
   width: 100px;
