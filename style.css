@@ -1,0 +1,32 @@
+body {
+  text-align: center;
+}
+
+
+.color-palette , #cor1 , #cor2 , #cor3 , #cor4 {
+  border: solid black 1px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+
+#cor1 {
+  background-color: black;
+
+}
+
+#cor2 {
+  background-color: red;
+}
+
+#cor3 {
+  background-color: blue;
+
+}
+
+#cor4 {
+  background-color: green;
+
+}
+
