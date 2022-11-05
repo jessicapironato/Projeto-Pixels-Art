@@ -6,12 +6,27 @@ window.onload = () => {
     salvarCores();
   }
   colorirQuadros();
-}
 
-document.getElementById('button-random-color').addEventListener('click', () => {
-  salvarCores();
-  colorirQuadros();
-});
+  document.getElementById('button-random-color').addEventListener('click', () => {
+    salvarCores();
+    colorirQuadros();
+  });
+
+  const quadros = document.querySelectorAll('.color');
+  for (let index = 0; index < quadros.length; index += 1) {
+    quadros[index].addEventListener('click', () => {
+      clicaRemove(quadros[index]);
+    });
+  }
+  
+  const pixels = document.querySelectorAll('.pixel');
+  for (let index = 0; index < pixels.length; index += 1) {
+    pixels[index].addEventListener('click', () => {
+      const quadroSelecionado = document.querySelector('.selected');
+      pixels[index].style.backgroundColor = quadroSelecionado.style.backgroundColor;
+    });
+  }
+}
 
 // Functions
 
@@ -45,4 +60,11 @@ function colorirQuadros() {
   for (let index = 0; index < quadros.length; index += 1) {
     quadros[index].style.backgroundColor = cores[index];
   }
+}
+
+function clicaRemove(elemento)
+{
+  const quadroSelecionado = document.querySelector('.selected');
+  quadroSelecionado.className = 'color';
+  elemento.className += ' selected';
 }
