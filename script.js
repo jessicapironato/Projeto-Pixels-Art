@@ -7,10 +7,10 @@ const pixelQuadro = document.getElementById('pixel-board');
 
 //para fazer cores aleatorias a cada click (somente o primeiro black)
 function corAleatoria() {
-  const r = Math.ceil(Math.random() * 255);
-  const g = Math.ceil(Math.random() * 255);
-  const b = Math.ceil(Math.random() * 255);
-  return `rgba(${r}, ${g}, ${b})`;
+  const red = Math.ceil(Math.random() * 255);
+  const green = Math.ceil(Math.random() * 255);
+  const blue = Math.ceil(Math.random() * 255);
+  return `rgba(${red}, ${green}, ${blue})`;
 }
 
 botaoAleatorio.addEventListener('click', () => { 
