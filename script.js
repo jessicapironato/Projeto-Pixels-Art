@@ -12,10 +12,17 @@ window.onload = () => {
     colorirQuadros();
   });
 
+  document.getElementById('clear-board').addEventListener('click', () => {
+    const pixels = document.querySelectorAll('.pixel');
+    for (let index = 0; index < pixels.length; index += 1) {
+      pixels[index].style.backgroundColor = 'white'
+    }
+  })
+
   const quadros = document.querySelectorAll('.color');
   for (let index = 0; index < quadros.length; index += 1) {
     quadros[index].addEventListener('click', () => {
-      clicaRemove(quadros[index]);
+      atualizaQuadroSelecionado(quadros[index]);
     });
   }
   
@@ -62,9 +69,9 @@ function colorirQuadros() {
   }
 }
 
-function clicaRemove(elemento)
+function atualizaQuadroSelecionado(novoQuadroSelecionado)
 {
-  const quadroSelecionado = document.querySelector('.selected');
-  quadroSelecionado.className = 'color';
-  elemento.className += ' selected';
+  const quadroSelecionadoAtual = document.querySelector('.selected');
+  quadroSelecionadoAtual.className = 'color';
+  novoQuadroSelecionado.className += ' selected';
 }
