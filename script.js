@@ -2,10 +2,14 @@
 
 window.onload = () => {
   criarPixelBoard();
+  if (localStorage.getItem('pixelBoard') === null) {
+    localStorage.setItem('pixelBoard', JSON.stringify([]));
+  }
   if (localStorage.getItem('colorPalette') === null) {
     salvarCores();
   }
   colorirQuadros();
+  colorirPixels();
 
   document.getElementById('button-random-color').addEventListener('click', () => {
     salvarCores();
@@ -31,6 +35,10 @@ window.onload = () => {
     pixels[index].addEventListener('click', () => {
       const quadroSelecionado = document.querySelector('.selected');
       pixels[index].style.backgroundColor = quadroSelecionado.style.backgroundColor;
+      const posicaoCor = {"posicao": index, "cor": quadroSelecionado.style.backgroundColor};
+      const pixelBoards = JSON.parse(localStorage.getItem('pixelBoard'));
+      pixelBoards.push(posicaoCor);
+      localStorage.setItem('pixelBoard', JSON.stringify(pixelBoards));
     });
   }
 }
@@ -66,6 +74,14 @@ function colorirQuadros() {
   const cores = JSON.parse(localStorage.getItem('colorPalette'));
   for (let index = 0; index < quadros.length; index += 1) {
     quadros[index].style.backgroundColor = cores[index];
+  }
+}
+
+function colorirPixels() {
+  const pixels = document.getElementsByClassName('pixel');
+  const posicaoCor = JSON.parse(localStorage.getItem('pixelBoard'));
+  for (let index = 0; index < posicaoCor.length; index += 1) {
+    pixels[posicaoCor[index].posicao].style.backgroundColor = posicaoCor[index].cor;
   }
 }
 
